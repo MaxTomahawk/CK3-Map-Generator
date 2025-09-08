@@ -27,6 +27,12 @@ toolsContent.addEventListener("click", function (event) {
   else if (button === "overviewMilitaryButton") overviewMilitary();
   else if (button === "overviewMarkersButton") overviewMarkers();
   else if (button === "overviewCellsButton") viewCellDetails();
+  else if (button === "viewBaroniesButton") baroniesEditor.show();
+  else if (button === "viewTitlesButton") titlesOverview.show();
+  else if (button === "viewRulersButton") rulersView.show();
+  else if (button === "viewSpecialBuildingsButton") specialbuildingsView.show();
+  else if (button === "viewPoisButton") poisView.show();
+  else if (button === "viewValidatorButton") validatorView.show();
 
   // click on Regenerate buttons
   if (event.target.parentNode.id === "regenerateFeature") {

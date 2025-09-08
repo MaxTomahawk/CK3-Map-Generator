@@ -111,6 +111,14 @@ function refreshReligionsEditor() {
 function religionsCollectStatistics() {
   const {cells, religions, burgs} = pack;
   religions.forEach(r => {
+    r.faiths = r.faiths || [];
+    r.faiths.forEach(f => {
+      f.color = f.color || "";
+      f.icon = f.icon || "";
+      f.doctrines = f.doctrines || [];
+      f.tenets = f.tenets || [];
+      f.holySites = f.holySites || [];
+    });
     r.cells = r.area = r.rural = r.urban = 0;
   });
 
