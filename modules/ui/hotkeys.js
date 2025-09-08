@@ -54,6 +54,12 @@ function handleKeyup(event) {
   else if (shift && code === "KeyM") overviewMilitary();
   else if (shift && code === "KeyK") overviewMarkers();
   else if (shift && code === "KeyE") viewCellDetails();
+  else if (code === "KeyB") baroniesEditor.show();
+  else if (code === "KeyT") titlesOverview.show();
+  else if (code === "KeyR") rulersView.show();
+  else if (code === "KeyS") specialbuildingsView.show();
+  else if (code === "KeyP") poisView.show();
+  else if (code === "KeyV") validatorView.show();
   else if (key === "!") toggleAddBurg();
   else if (key === "@") toggleAddLabel();
   else if (key === "#") toggleAddRiver();
