@@ -15,5 +15,12 @@ function hide() {
   console.info("Special Buildings View hidden");
 }
 
-window.specialbuildingsView = {init, show, hide};
+function showLayer() {
+  gSpecialBuildings.style("display", null);
+}
+
+function hideLayer() {
+  gSpecialBuildings.style("display", "none");
+}
+window.specialbuildingsView = {init, show, hide, showLayer, hideLayer};
 

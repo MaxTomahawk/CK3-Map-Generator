@@ -63,7 +63,6 @@ let regions = viewbox.append("g").attr("id", "regions");
 let statesBody = regions.append("g").attr("id", "statesBody");
 let statesHalo = regions.append("g").attr("id", "statesHalo");
 let provs = viewbox.append("g").attr("id", "provs");
-let gBaronies = viewbox.append("g").attr("id", "gBaronies");
 let zones = viewbox.append("g").attr("id", "zones");
 let borders = viewbox.append("g").attr("id", "borders");
 let stateBorders = borders.append("g").attr("id", "stateBorders");
@@ -77,10 +76,14 @@ let coastline = viewbox.append("g").attr("id", "coastline");
 let ice = viewbox.append("g").attr("id", "ice");
 let prec = viewbox.append("g").attr("id", "prec").style("display", "none");
 let population = viewbox.append("g").attr("id", "population");
-let gTitles = viewbox.append("g").attr("id", "gTitles");
 let emblems = viewbox.append("g").attr("id", "emblems").style("display", "none");
-let gMarkers = viewbox.append("g").attr("id", "gMarkers");
+let gBaronies = viewbox.append("g").attr("id", "gBaronies");
+let gTitles = viewbox.append("g").attr("id", "gTitles");
+let gRulers = viewbox.append("g").attr("id", "gRulers");
+let gSpecialBuildings = viewbox.append("g").attr("id", "gSpecialBuildings");
+let gPOIs = viewbox.append("g").attr("id", "gPOIs");
 let labels = viewbox.append("g").attr("id", "labels");
+let gMarkers = viewbox.append("g").attr("id", "gMarkers");
 let icons = viewbox.append("g").attr("id", "icons");
 let burgIcons = icons.append("g").attr("id", "burgIcons");
 let anchors = icons.append("g").attr("id", "anchors");
@@ -95,6 +98,8 @@ let fogging = viewbox
   .style("display", "none");
 let ruler = viewbox.append("g").attr("id", "ruler").style("display", "none");
 let debug = viewbox.append("g").attr("id", "debug");
+
+window.addEventListener("load", restoreCK3LayersState);
 
 lakes.append("g").attr("id", "freshwater");
 lakes.append("g").attr("id", "salt");
