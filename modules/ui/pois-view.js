@@ -14,5 +14,12 @@ function hide() {
   console.info("POIs View hidden");
 }
 
-window.poisView = {init, show, hide};
+function showLayer() {
+  gPOIs.style("display", null);
+}
+
+function hideLayer() {
+  gPOIs.style("display", "none");
+}
+window.poisView = {init, show, hide, showLayer, hideLayer};
 

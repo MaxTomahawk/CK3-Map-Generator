@@ -14,5 +14,12 @@ function hide() {
   console.info("Rulers View hidden");
 }
 
-window.rulersView = {init, show, hide};
+function showLayer() {
+  gRulers.style("display", null);
+}
+
+function hideLayer() {
+  gRulers.style("display", "none");
+}
+window.rulersView = {init, show, hide, showLayer, hideLayer};
 

@@ -15,5 +15,12 @@ function hide() {
   console.info("Titles View hidden");
 }
 
-window.titlesOverview = {init, show, hide};
+function showLayer() {
+  gTitles.style("display", null);
+}
+
+function hideLayer() {
+  gTitles.style("display", "none");
+}
+window.titlesOverview = {init, show, hide, showLayer, hideLayer};
 
