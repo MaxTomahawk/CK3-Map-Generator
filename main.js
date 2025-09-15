@@ -63,7 +63,6 @@ let regions = viewbox.append("g").attr("id", "regions");
 let statesBody = regions.append("g").attr("id", "statesBody");
 let statesHalo = regions.append("g").attr("id", "statesHalo");
 let provs = viewbox.append("g").attr("id", "provs");
-let gBaronies = viewbox.append("g").attr("id", "gBaronies");
 let zones = viewbox.append("g").attr("id", "zones");
 let borders = viewbox.append("g").attr("id", "borders");
 let stateBorders = borders.append("g").attr("id", "stateBorders");
@@ -77,9 +76,7 @@ let coastline = viewbox.append("g").attr("id", "coastline");
 let ice = viewbox.append("g").attr("id", "ice");
 let prec = viewbox.append("g").attr("id", "prec").style("display", "none");
 let population = viewbox.append("g").attr("id", "population");
-let gTitles = viewbox.append("g").attr("id", "gTitles");
 let emblems = viewbox.append("g").attr("id", "emblems").style("display", "none");
-let gMarkers = viewbox.append("g").attr("id", "gMarkers");
 let labels = viewbox.append("g").attr("id", "labels");
 let icons = viewbox.append("g").attr("id", "icons");
 let burgIcons = icons.append("g").attr("id", "burgIcons");
@@ -152,14 +149,7 @@ legend
 
 // main data variables
 let grid = {}; // initial graph based on jittered square grid and data
-// packed graph and data with CK3 scaffolding
-let pack = {
-  baronies: [],
-  titles: {b: [], c: [], d: [], k: [], e: []},
-  rulers: [],
-  specialBuildings: [],
-  pois: []
-};
+let pack = {}; // packed graph and data
 let seed;
 let mapId;
 let mapHistory = [];
@@ -638,14 +628,7 @@ async function generate(options) {
     if (shouldRegenerateGrid(grid, precreatedSeed)) grid = precreatedGraph || generateGrid();
     else delete grid.cells.h;
     grid.cells.h = await HeightmapGenerator.generate(grid);
-    // reset pack and reinitialize CK3 scaffolding
-    pack = {
-      baronies: [],
-      titles: {b: [], c: [], d: [], k: [], e: []},
-      rulers: [],
-      specialBuildings: [],
-      pois: []
-    };
+    pack = {}; // reset pack
 
     Features.markupGrid();
     addLakesInDeepDepressions();

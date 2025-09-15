@@ -100,13 +100,7 @@ function refreshCulturesEditor() {
 
 function culturesCollectStatistics() {
   const {cells, cultures, burgs} = pack;
-  // ensure CK3-specific fields exist
   cultures.forEach(c => {
-    c.heritage = c.heritage || "";
-    c.ethos = c.ethos || "";
-    c.language = c.language || "";
-    c.martial_custom = c.martial_custom || "";
-    c.traditions = c.traditions || [];
     c.cells = c.area = c.rural = c.urban = 0;
   });
 
