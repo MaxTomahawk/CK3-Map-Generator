@@ -14,12 +14,5 @@ function hide() {
   console.info("Baronies View hidden");
 }
 
-function showLayer() {
-  gBaronies.style("display", null);
-}
-
-function hideLayer() {
-  gBaronies.style("display", "none");
-}
-window.baroniesEditor = {init, show, hide, showLayer, hideLayer};
+window.baroniesEditor = {init, show, hide};
 
