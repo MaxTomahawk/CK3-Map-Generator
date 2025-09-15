@@ -4,55 +4,6 @@
 let presets = {}; // global object
 restoreCustomPresets(); // run on-load
 
-const ck3LayersKey = "ui.layers";
-
-function storeLayerState(layer, value) {
-  const state = JSON.parse(localStorage.getItem(ck3LayersKey) || "{}");
-  state[layer] = value;
-  localStorage.setItem(ck3LayersKey, JSON.stringify(state));
-}
-
-function restoreCK3LayersState() {
-  const state = JSON.parse(localStorage.getItem(ck3LayersKey) || "{}");
-  if (state.baronies) {
-    baroniesEditor.showLayer();
-    turnButtonOn("toggleBaronies");
-  } else {
-    gBaronies.style("display", "none");
-    turnButtonOff("toggleBaronies");
-  }
-  if (state.titles) {
-    titlesOverview.showLayer();
-    turnButtonOn("toggleTitles");
-  } else {
-    gTitles.style("display", "none");
-    turnButtonOff("toggleTitles");
-  }
-  if (state.rulers) {
-    rulersView.showLayer();
-    turnButtonOn("toggleRulersView");
-  } else {
-    gRulers.style("display", "none");
-    turnButtonOff("toggleRulersView");
-  }
-  if (state.specialbuildings) {
-    specialbuildingsView.showLayer();
-    turnButtonOn("toggleSpecialBuildings");
-  } else {
-    gSpecialBuildings.style("display", "none");
-    turnButtonOff("toggleSpecialBuildings");
-  }
-  if (state.pois) {
-    poisView.showLayer();
-    turnButtonOn("togglePOIs");
-  } else {
-    gPOIs.style("display", "none");
-    turnButtonOff("togglePOIs");
-  }
-}
-
-window.restoreCK3LayersState = restoreCK3LayersState;
-
 function getDefaultPresets() {
   return {
     political: [
@@ -258,11 +209,6 @@ function drawLayers() {
   if (layerIsOn("toggleBurgIcons")) drawBurgIcons();
   if (layerIsOn("toggleMilitary")) drawMilitary();
   if (layerIsOn("toggleMarkers")) drawMarkers();
-  if (layerIsOn("toggleBaronies")) baroniesEditor.showLayer();
-  if (layerIsOn("toggleTitles")) titlesOverview.showLayer();
-  if (layerIsOn("toggleRulersView")) rulersView.showLayer();
-  if (layerIsOn("toggleSpecialBuildings")) specialbuildingsView.showLayer();
-  if (layerIsOn("togglePOIs")) poisView.showLayer();
   if (layerIsOn("toggleRulers")) rulers.draw();
   // scale bar
   // vignette
@@ -923,71 +869,6 @@ function toggleMarkers(event) {
   }
 }
 
-function toggleBaronies(event) {
-  if (!layerIsOn("toggleBaronies")) {
-    turnButtonOn("toggleBaronies");
-    baroniesEditor.showLayer();
-    storeLayerState("baronies", true);
-  } else {
-    if (event && isCtrlClick(event)) return;
-    baroniesEditor.hideLayer();
-    turnButtonOff("toggleBaronies");
-    storeLayerState("baronies", false);
-  }
-}
-
-function toggleTitles(event) {
-  if (!layerIsOn("toggleTitles")) {
-    turnButtonOn("toggleTitles");
-    titlesOverview.showLayer();
-    storeLayerState("titles", true);
-  } else {
-    if (event && isCtrlClick(event)) return;
-    titlesOverview.hideLayer();
-    turnButtonOff("toggleTitles");
-    storeLayerState("titles", false);
-  }
-}
-
-function toggleRulersView(event) {
-  if (!layerIsOn("toggleRulersView")) {
-    turnButtonOn("toggleRulersView");
-    rulersView.showLayer();
-    storeLayerState("rulers", true);
-  } else {
-    if (event && isCtrlClick(event)) return;
-    rulersView.hideLayer();
-    turnButtonOff("toggleRulersView");
-    storeLayerState("rulers", false);
-  }
-}
-
-function toggleSpecialBuildings(event) {
-  if (!layerIsOn("toggleSpecialBuildings")) {
-    turnButtonOn("toggleSpecialBuildings");
-    specialbuildingsView.showLayer();
-    storeLayerState("specialbuildings", true);
-  } else {
-    if (event && isCtrlClick(event)) return;
-    specialbuildingsView.hideLayer();
-    turnButtonOff("toggleSpecialBuildings");
-    storeLayerState("specialbuildings", false);
-  }
-}
-
-function togglePOIs(event) {
-  if (!layerIsOn("togglePOIs")) {
-    turnButtonOn("togglePOIs");
-    poisView.showLayer();
-    storeLayerState("pois", true);
-  } else {
-    if (event && isCtrlClick(event)) return;
-    poisView.hideLayer();
-    turnButtonOff("togglePOIs");
-    storeLayerState("pois", false);
-  }
-}
-
 function toggleLabels(event) {
   if (!layerIsOn("toggleLabels")) {
     turnButtonOn("toggleLabels");
@@ -1153,11 +1034,6 @@ function getLayer(id) {
   if (id === "toggleIce") return $("#ice");
   if (id === "toggleTexture") return $("#texture");
   if (id === "toggleEmblems") return $("#emblems");
-  if (id === "toggleBaronies") return $("#gBaronies");
-  if (id === "toggleTitles") return $("#gTitles");
-  if (id === "toggleRulersView") return $("#gRulers");
-  if (id === "toggleSpecialBuildings") return $("#gSpecialBuildings");
-  if (id === "togglePOIs") return $("#gPOIs");
   if (id === "toggleLabels") return $("#labels");
   if (id === "toggleBurgIcons") return $("#icons");
   if (id === "toggleMarkers") return $("#markers");
